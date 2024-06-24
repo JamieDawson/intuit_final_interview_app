@@ -12,7 +12,7 @@ function App() {
     <CountryProvider>
       <div>Country app</div>
       <Names />
-      <FormToSearchCountry />
+      {/* <FormToSearchCountry /> */}
     </CountryProvider>
   );
 }

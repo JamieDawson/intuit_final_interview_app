@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
 import CountryContext from "../../CountryContext.js";
+import FormToSearchCountry from "../FormToSearchCountry/FormToSearchCountry.jsx";
 
 const Names = () => {
   const { countryNames, entireJson, countryData, setCountryData } =
     useContext(CountryContext); //importing the contenxt state
   const [selectedIndex, setSelectedIndex] = useState(null); //helps me find the index I'm selecting
 
-  console.log(entireJson);
+  // console.log(entireJson);
   const handleChange = (event) => {
+    console.log(event.target.value);
     setSelectedIndex(event.target.value);
-    console.log(entireJson[event.target.value].population);
+    // console.log(entireJson[event.target.value].population);
     setCountryData({
       name: entireJson[event.target.value].name.common,
       flag: entireJson[event.target.value].flags.png,
@@ -18,17 +20,6 @@ const Names = () => {
       capital: entireJson[event.target.value].capital[0],
     });
   };
-
-  /*
-  {
-     name: Canada,
-      flag: png,
-      population: entireJson[event.target.value].population,
-      region: entireJson[event.target.value].region,
-      capital: entireJson[event.target.value].capital[0],
-  }
-
-  */
 
   return (
     <div>
@@ -51,9 +42,14 @@ const Names = () => {
       <h5>Population: {countryData.population}</h5>
       <h5>Region: {countryData.region}</h5>
       <h5>Capital: {countryData.capital}</h5>
+
+      <FormToSearchCountry />
     </div>
   );
 };
+
+//name, parent
+//update index onparent itself on state of parent itself
 
 export default Names;
 
